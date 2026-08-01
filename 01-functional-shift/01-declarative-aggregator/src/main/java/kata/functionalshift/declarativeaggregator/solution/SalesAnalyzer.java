@@ -1,11 +1,13 @@
 package kata.functionalshift.declarativeaggregator.solution;
 
 import java.math.BigDecimal;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import kata.functionalshift.declarativeaggregator.domain.Order;
 import kata.functionalshift.declarativeaggregator.domain.OrderStatus;
+import kata.functionalshift.declarativeaggregator.domain.vo.Money;
 import kata.functionalshift.declarativeaggregator.domain.vo.OrderId;
 import kata.functionalshift.declarativeaggregator.domain.vo.ProductSnapshot;
 
@@ -75,5 +77,24 @@ public class SalesAnalyzer {
                 Order::status,
                 Collectors.reducing(
                     BigDecimal.ZERO, o -> o.totalBeforeDiscount().amount(), BigDecimal::add)));
+  }
+
+  // --- Level 4 ---
+
+  /**
+   * Returns a map with exactly two keys: true (High Value) and false (Standard). The value is the
+   * count of orders in each partition.
+   */
+  public static Map<Boolean, Long> partitionOrdersByValue(List<Order> orders, Money threshold) {
+    return orders.stream().collect(Collectors.partitioningBy(null));
+  }
+
+  /**
+   * Returns statistics (Min, Max, Average, Count, Sum) for quantities across all order lines.
+   *
+   * @return
+   */
+  public static IntSummaryStatistics getLineQuantityStatistics(List<Order> orders) {
+    return null;
   }
 }

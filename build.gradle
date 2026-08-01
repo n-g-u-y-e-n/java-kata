@@ -1,0 +1,36 @@
+// Defines shared build configuration for all kata modules.
+
+plugins {
+	alias(libs.plugins.spring.boot) apply false
+	id 'java'
+	alias(libs.plugins.spotless) apply false
+}
+
+def catalog = libs
+
+allprojects {
+	apply plugin: catalog.plugins.spotless.get().pluginId
+
+	spotless {
+		groovyGradle {
+			target '*.gradle'
+			greclipse()
+		}
+		format('misc') {
+			target '*.md', '.gitignore'
+			trimTrailingWhitespace()
+			leadingTabsToSpaces(2)
+			endWithNewline()
+		}
+	}
+}
+
+subprojects {
+	apply plugin: 'java-library'
+
+	java {
+		toolchain {
+			languageVersion = JavaLanguageVersion.of(25)
+		}
+	}
+}

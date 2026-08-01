@@ -1,0 +1,24 @@
+pluginManagement {
+	repositories {
+		mavenCentral()
+		gradlePluginPortal()
+	}
+
+	// Makes local convention plugins resolvable during the plugins phase.
+	includeBuild 'build-logic'
+}
+
+rootProject.name = 'java-kata'
+
+dependencyResolutionManagement {
+	repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+}
+
+include(
+		':01-functional-shift:01-declarative-aggregator',
+		':07-advanced-katas:29-range-kata'
+		)
