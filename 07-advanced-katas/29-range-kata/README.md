@@ -1,4 +1,4 @@
-# Guava-style Range Kata
+# Range Kata
 
 Implement a generic `Range` class that represents a contiguous interval on a totally ordered domain (any type that
 implements `Comparable`). This kata is inspired by the powerful `com.google.common.collect.Range` class from Google's
@@ -19,11 +19,6 @@ open). A `Range` can then be used to check if it contains a value, or to perform
 - Each level MUST be a completed by a Git commit.
 - Please commit **directly** to the `master` or `main` branch.
 - Please avoid committing any IDE's specific files.
-
-## Development
-
-- Gradle 8.7.
-- Java 21.
 
 ## Class `Range` _public_ API
 
