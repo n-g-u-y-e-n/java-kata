@@ -113,6 +113,7 @@ class RangeTest {
 
     assertThat(range.encloses(Range.closed(4, 5))).isTrue();
     assertThat(range.encloses(Range.open(3, 6))).isTrue();
+    assertThat(range.encloses(Range.greaterThan(3))).isFalse();
   }
 
   @Test
